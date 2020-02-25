@@ -28,37 +28,37 @@ class ChatListComponent extends React.Component {
                         onClick={this.newChat}>
                         New Message    
                     </Button>
-                        <List>
-                            {
-                                this.props.chats.map((_chat, _index) => {
-                                    return(
-                                        <div key={_index}>
-                                            <ListItem onClick={() => this.selectChat(_index)}
-                                            className={classes.listItem}
-                                            selected={this.props.selectedChatIndex === _index}
-                                            alignItems='flex-start'>
-                                                <ListItemAvatar>
-                                                    <Avatar alt='Remy Sharp'>{_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}</Avatar>
-                                                </ListItemAvatar>
-                                                <ListItemText primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
-                                                    secordary={
-                                                        <React.Fragment>
-                                                            <Typography component='span' color='textPrimary'>
-                                                                {
-                                                                    _chat.messages[_chat.messages.length - 1].messages.substring(0,30)
-                                                                }
-                                                            </Typography>
-                                                        </React.Fragment>
-                                                    }>
-        
-                                                </ListItemText>
-                                            </ListItem>
-                                            <Divider></Divider>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </List>
+                    <List>
+                        {
+                            this.props.chats.map((_chat, _index) => {
+                                return(
+                                    <div key={_index}>
+                                        <ListItem onClick={() => this.selectChat(_index)}
+                                        className={classes.listItem}
+                                        selected={this.props.selectedChatIndex === _index}
+                                        alignItems='flex-start'>
+                                            <ListItemAvatar>
+                                                <Avatar alt='Remy Sharp'>{_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}</Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText primary={_chat.users.filter(_user => _user !== this.props.userEmail)[0]}
+                                                secondary={
+                                                    <React.Fragment>
+                                                        <Typography component='span' color='textPrimary'>
+                                                            {
+                                                                _chat.messages[_chat.messages.length - 1].message.substring(0,30)
+                                                            }
+                                                        </Typography>
+                                                    </React.Fragment>
+                                                }>
+    
+                                            </ListItemText>
+                                        </ListItem>
+                                        <Divider></Divider>
+                                    </div>
+                                )
+                            })
+                        }
+                    </List>
                 </main>
                 );
         } else {
